@@ -10,7 +10,6 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
         ) 
 
 
-
 def talk_to_me(bot, update):
     upc = update.message.chat
     word_from_user = update.message.text
