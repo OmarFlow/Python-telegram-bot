@@ -32,26 +32,27 @@ for k, v in ALL_CITY.items():
 
 GAME = 1
 
-
 def calc(bot, update, user_data):
 	command, *expession = update.message.text.split()
 	expession = ''.join(expession)
 	result = extended_calculator.calculator(expession)
 	update.message.reply_text(result, reply_markup=get_keyboard())
 
+
 def random_dunkey(bot, update, user_data):
     dunky = random.choice(glob('img/osl*.jpg') + glob('img/osl*.jpeg'))
     bot.send_photo(chat_id=update.message.chat.id, photo=open(dunky, 'rb'))
-       
+    
+
 def talk_to_me(bot, update, user_data):
     upc = update.message.chat
     word_from_user = update.message.text
     break_word = ''.join([random.choice(['?','*','@', '%', '<', '>', '!', '$']) if i%2 else v for i,v in enumerate(word_from_user)])
 
     if len(word_from_user) > 5: 
-        update.message.reply_text(f'{break_word}  <----  \\~.~/\nслишком много букав, я еще так молод, чтобы это понять!')
+        update.message.reply_text(f'{break_word}  <----  \\~.~/\nслишком много букав, я еще так молод, чтобы это понять!', reply_markup=get_keyboard())
     else:
-        update.message.reply_text(f'Что, что ты({get_user_emo(user_data)}) сказал? Мне показалось или это было:\n{word_from_user}')
+        update.message.reply_text(f'Что, что ты({get_user_emo(user_data)}) сказал? Мне показалось или это было:\n{word_from_user}', reply_markup=get_keyboard())
     logging.info(f'User: {upc.username}, Chat id: {upc.id}, Message:{update.message.text}')
 
 
@@ -208,6 +209,7 @@ def main():
     
     mybot.start_polling()
     mybot.idle()
+
 
 if __name__ == "__main__":
     main()
