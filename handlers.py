@@ -7,6 +7,7 @@ from datetime import datetime
 import copy
 import logging
 import ephem
+import os
 
 from utils import *
 from telegram.ext import Updater, CommandHandler,RegexHandler, MessageHandler, Filters, ConversationHandler
@@ -148,3 +149,19 @@ def city_game(bot, update, user_data):
         user_data['check'] = bot_word_without_bad_ending[-1].upper()
 
     return GAME
+
+
+def check_user_photo(bot, update, user_data):
+    update.message.reply_text('Обрабатываю фото')
+    os.makedirs('downloads', exist_ok=True)
+    photo_file = bot.getFile(update.message.photo[-1].file_id)
+    filename = os.path.join('downloads', f'{photo_file.file_id}.jpg')
+    photo_file.download(filename)
+    update.message.reply_text('Файл сохранен')
+    if is_cat(filename):
+        update.message.reply_text('Обнаружен шерстяной, добавляю в библиотеку')
+        new_filename = os.path.join('img', f'cat_{photo_file.file_id}.jpg')
+        os.rename(filename, new_filename)
+    else:
+        os.remove(filename)
+        update.message.reply_text('Шерстяной не обнаружен')
