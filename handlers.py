@@ -91,17 +91,6 @@ def next_full_moon(bot, update, user_data):
     moon = ephem.next_full_moon(date)
     update.message.reply_text(moon, reply_markup=get_keyboard())
 
-
-def city_play(bot, update, user_data):
-    update.message.reply_text('Привет, загадывай город!)\nДля выхода из игры отправляй /cancel', reply_markup=get_keyboard())
-
-    return GAME
-
-
-def city_game_end(bot, update, user_data):
-    update.message.reply_text('Bye!', reply_markup=get_keyboard())
-    return ConversationHandler.END
-
        
 def change_avatar(bot, update, user_data):
     if 'emo' in user_data:
@@ -118,6 +107,17 @@ def get_contact(bot, update, user_data):
 def get_location(bot, update, user_data):
     print(update.message.location)
     update.message.reply_text('Спасибо {}'.format(get_user_emo(user_data)), reply_markup=get_keyboard())
+    
+    
+def city_play(bot, update, user_data):
+    update.message.reply_text('Привет, загадывай город!)\nДля выхода из игры отправляй /cancel', reply_markup=get_keyboard())
+
+    return GAME
+
+
+def city_game_end(bot, update, user_data):
+    update.message.reply_text('Bye!', reply_markup=get_keyboard())
+    return ConversationHandler.END
 
 
 def city_game(bot, update, user_data):

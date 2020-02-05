@@ -35,8 +35,6 @@ def is_cat(file_name):
     app = ClarifaiApp(api_key=settings.CLARIFAI_API_KEY)
     model = app.public_models.general_model
     response = model.predict_by_filename(file_name, max_concepts=5)
-    # pp = pprint.PrettyPrinter(indent=4)
-    # pp.pprint(response)
     if response['status']['code'] == 10000:
         for concept in response['outputs'][0]['data']['concepts']:
             if concept['name'] == 'cat':
