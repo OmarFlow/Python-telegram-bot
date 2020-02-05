@@ -41,7 +41,7 @@ requests==2.22.0
 SecretStorage==2.3.1
 service-identity==16.0.0
 six==1.13.0
-Twisted==17.9.0
+Twisted==19.7.0
 twodict==1.2
 typing==3.7.4.1
 urllib3==1.25.7
