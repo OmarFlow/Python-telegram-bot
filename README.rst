@@ -19,9 +19,15 @@ My first bot
         'urllib3_proxy_kwargs': {'username':логин, 'password':пароль}
     }
 
-    API_KEY = "Ключ который вы получили у BotFather"
+    API_KEY = 'Ключ который вы получили у BotFather'
 
     USER_EMOJI = [':smiley_cat:', ':smiling_imp:', ':panda_face:', ':dog:']
+
+    CLARIFAI_API_KEY = 'ваш токен от сервиса clarifai(распознавание картинок)'
+
+    MONGO_LINK = 'ссылка подключения к облачной Mongo db'
+
+    MONGO_DB = 'название вашей бд'
 
 Запуск
 ------
