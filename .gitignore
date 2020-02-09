@@ -1,5 +1,6 @@
 *.pyc
 *.log
+env
 cat*
 settings.py
 .vscode/
